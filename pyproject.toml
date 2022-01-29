@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "ABIP"
+version = "0.1.0"
+description = "Simple API para obtener información del saldo de la tarjeta Bip!"
+authors = ["Benjamín Vicente <benjavicente@uc.cl>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.73.0"
+beautifulsoup4 = {extras = ["lxml"], version = "^4.10.0"}
+aiohttp = {extras = ["speedups"], version = "^3.8.1"}
+uvicorn = {extras = ["standard"], version = "^0.17.1"}
+fastapi-cache2 = {extras = ["redis"], version = "^0.1.8"}
+pydantic = {extras = ["dotenv"], version = "^1.9.0"}
+
+[tool.poetry.dev-dependencies]
+black = "^21.12b0"
+mypy = "^0.931"
+isort = "^5.10.1"
+flake8 = "^4.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+
+[tool.isort]
+profile = "black"

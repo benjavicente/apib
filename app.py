@@ -12,7 +12,7 @@ from pydantic import BaseSettings, RedisDsn
 
 
 class Environment(BaseSettings):
-    redis_dns: RedisDsn
+    redis_url: RedisDsn
 
 
 app = FastAPI()
@@ -67,5 +67,5 @@ async def get_balance(bip_number: int):
 
 @app.on_event("startup")
 async def startup():
-    redis = aioredis.from_url(env.redis_dns, encoding="utf8", decode_responses=True)
+    redis = aioredis.from_url(env.redis_url, encoding="utf8", decode_responses=True)
     FastAPICache.init(RedisBackend(redis), prefix="fastapi-cache")
